@@ -1,0 +1,19 @@
+<h1>All your Restaurants</h1>
+<%= link_to 'Create new +', new_restaurant_path, class: 'm-8' %>
+<br><br>
+
+<ul>
+  <% @restaurants.each do |r| %>
+    <li>
+      <h3 class="yellow"><%= link_to r.name, restaurant_path(r) %></h3>
+      <h5 class="yellow"><%= r.category.capitalize %></h5>
+      <p class="yellow"><%= r.phone_number %></p>
+      <p class="yellow"><%= r.address %></p>
+
+      <%= link_to 'Delete', restaurant_path(r),
+          method: :delete,
+          data: {confirm: 'Are you sure deleting this restaurant?'}, class: 'btn btn-danger'  %>
+    </li>
+    <br>
+  <% end %>
+</ul>
